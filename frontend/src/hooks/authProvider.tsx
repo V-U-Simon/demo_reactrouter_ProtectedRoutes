@@ -1,13 +1,11 @@
 import React, { createContext, useMemo, useState, ReactNode } from "react";
 
-// Определение типа для контекста
 interface AuthContextType {
   token: string | null;
   login: () => void;
   logout: () => void;
 }
 
-// Используйте ReactNode для children, чтобы допустить любые дочерние элементы
 interface AuthProviderProps {
   children: ReactNode;
 }
