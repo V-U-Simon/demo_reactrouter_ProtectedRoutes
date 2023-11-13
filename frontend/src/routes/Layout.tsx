@@ -1,19 +1,34 @@
 import { Link, Outlet } from "react-router-dom";
+import { useAuth } from "src/hooks/useAuth";
 
-export const Layout = () => {
+export function Layout() {
+  console.log("hook is working");
+  const { token, login, logout } = useAuth();
+
   return (
     <>
-      <h1>React Router</h1>
+      <button onClick={() => login()} className={`btn ${token && "border-green-400"}`} disabled={token}>
+        Login
+      </button>
+      <button onClick={() => logout()} className={`btn ${!token && "border-red-400"}`} disabled={!token}>
+        Logout
+      </button>
 
-      <h2 className="text-3xl font-bold underline text-rose-800 m-3">TailWind is working</h2>
-
-      <nav>
-        <Link to="/">Root</Link>
-        <Link to="/home">Home</Link>
-        <Link to="/user">User</Link>
-      </nav>
-
+      <h2>Authorization status: {JSON.stringify(token)}</h2>
+      <div className="centered-container">
+        <ul>
+          <li>
+            <Link to="/privateRoute">privateRoute</Link>
+          </li>
+          <li>
+            <Link to="/privateComponent">privateComponent</Link>
+          </li>
+          <li>
+            <Link to="/public">public</Link>
+          </li>
+        </ul>
+      </div>
       <Outlet />
     </>
   );
-};
+}
