@@ -5,6 +5,8 @@ export const Layout = () => {
     <>
       <h1>React Router</h1>
 
+      <h2 className="text-3xl font-bold underline text-rose-800 m-3">TailWind is working</h2>
+
       <nav>
         <Link to="/">Root</Link>
         <Link to="/home">Home</Link>
